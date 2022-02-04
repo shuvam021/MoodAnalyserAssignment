@@ -4,13 +4,17 @@ namespace MoodAnalyserAssignment
 {
     class Program
     {
-        static void Main(string[] args)
+        private static MoodAnalyser _app;
+        static void Main()
         {
-            var app = new MoodAnalyser();
-            // Console.WriteLine(app.AnalyseMood("I am in Happy mood"));
-            // Console.WriteLine(app.AnalyseMood("I am in sad mood"));
-            // Console.WriteLine(app.AnalyseMood("I am in mood for doing nothing"));
-            Console.WriteLine(app.AnalyseMood(null));
+            _app = new MoodAnalyser("I am in Happy mood");
+            Console.WriteLine(_app.AnalyseMood());
+            _app = new MoodAnalyser("I am in sad mood");
+            Console.WriteLine(_app.AnalyseMood());
+            _app = new MoodAnalyser("I am in any mood");
+            Console.WriteLine(_app.AnalyseMood());
+            _app = new MoodAnalyser();
+            Console.WriteLine(_app.AnalyseMood());
         }
     }
 }

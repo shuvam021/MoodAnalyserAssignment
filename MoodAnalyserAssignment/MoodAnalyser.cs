@@ -4,15 +4,26 @@ namespace MoodAnalyserAssignment
 {
     public class MoodAnalyser
     {
-        public string AnalyseMood(string message)
+        private readonly string _message;
+
+        public MoodAnalyser()
+        {
+            this._message = null;
+        }
+
+        public MoodAnalyser(string msg)
+        {
+            this._message = msg;
+        }
+        public string AnalyseMood()
         {
             try
             {
-                return message.ToLower().Contains("happy") ? "happy" : "sad";
+                return this._message.ToLower().Contains("sad") ? "SAD" : "HAPPY";
             }
             catch (NullReferenceException e)
             {
-                return "happy";
+                return "HAPPY";
             }
         }
     }

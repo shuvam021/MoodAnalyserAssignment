@@ -8,26 +8,25 @@ namespace TestMoodAnalysis
     public class TestMoodAnalyser
     {
         private MoodAnalyser _app;
-        [TestInitialize]
-        public void SetUp()
-        {
-            _app = new MoodAnalyser();
-        }
+        private string happyResponse = "HAPPY";
+        private string sadResponse = "SAD";
         
         /// <summary>Testing for possible outcomes of AnalyseMood() with respect to message parameter</summary>
         [TestMethod, TestCategory(@"AnalyseMood() result")]
         public void TestAnalyseMoodMethodResult()
         {
-            Assert.AreEqual(_app.AnalyseMood("I am in Happy mood"), "happy");
-            Assert.AreEqual(_app.AnalyseMood("I am in sad mood"), "sad");
-            Assert.AreEqual(_app.AnalyseMood("I am in mood for doing nothing"), "sad");
+            _app = new MoodAnalyser("I am in any mood");
+            Assert.AreEqual(_app.AnalyseMood(), this.happyResponse);
+            _app = new MoodAnalyser("I am in sad mood");
+            Assert.AreEqual(_app.AnalyseMood(), this.sadResponse);
         }
         
         /// <summary>Testing for outcomes of AnalyseMood() with null input</summary>
         [TestMethod, TestCategory(@"AnalyseMood() with null input")]
         public void TestAnalyseMoodMethodWithNullInput()
         {
-            Assert.AreEqual(_app.AnalyseMood(null), "happy");
+            _app = new MoodAnalyser();
+            Assert.AreEqual(_app.AnalyseMood(), this.happyResponse);
         }
     }
 }
