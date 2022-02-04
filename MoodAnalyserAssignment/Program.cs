@@ -6,7 +6,10 @@ namespace MoodAnalyserAssignment
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Mood Analyser Program!");
+            var app = new MoodAnalyser();
+            Console.WriteLine(app.AnalyseMood("I am in Happy mood"));
+            Console.WriteLine(app.AnalyseMood("I am in sad mood"));
+            Console.WriteLine(app.AnalyseMood("I am in mood for doing nothing"));
         }
     }
 }
