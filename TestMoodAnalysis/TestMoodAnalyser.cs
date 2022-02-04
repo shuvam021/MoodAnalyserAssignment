@@ -22,5 +22,12 @@ namespace TestMoodAnalysis
             Assert.AreEqual(_app.AnalyseMood("I am in sad mood"), "sad");
             Assert.AreEqual(_app.AnalyseMood("I am in mood for doing nothing"), "sad");
         }
+        
+        /// <summary>Testing for outcomes of AnalyseMood() with null input</summary>
+        [TestMethod, TestCategory(@"AnalyseMood() with null input")]
+        public void TestAnalyseMoodMethodWithNullInput()
+        {
+            Assert.AreEqual(_app.AnalyseMood(null), "happy");
+        }
     }
 }

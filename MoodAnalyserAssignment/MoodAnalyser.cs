@@ -1,10 +1,19 @@
-﻿namespace MoodAnalyserAssignment
+﻿using System;
+
+namespace MoodAnalyserAssignment
 {
     public class MoodAnalyser
     {
         public string AnalyseMood(string message)
         {
-            return message.ToLower().Contains("happy") ? "happy" : "sad";
+            try
+            {
+                return message.ToLower().Contains("happy") ? "happy" : "sad";
+            }
+            catch (NullReferenceException e)
+            {
+                return "happy";
+            }
         }
     }
 }
