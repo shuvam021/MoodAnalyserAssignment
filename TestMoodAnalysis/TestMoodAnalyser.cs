@@ -1,3 +1,4 @@
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MoodAnalyserAssignment;
 
@@ -8,17 +9,15 @@ namespace TestMoodAnalysis
     public class TestMoodAnalyser
     {
         private MoodAnalyser _app;
-        private string happyResponse = "HAPPY";
-        private string sadResponse = "SAD";
         
         /// <summary>Testing for possible outcomes of AnalyseMood() with respect to message parameter</summary>
         [TestMethod, TestCategory(@"AnalyseMood() result")]
         public void TestAnalyseMoodMethodResult()
         {
             _app = new MoodAnalyser("I am in any mood");
-            Assert.AreEqual(_app.AnalyseMood(), this.happyResponse);
+            Assert.AreEqual(ResponseMessage.HappyResponse, _app.AnalyseMood());
             _app = new MoodAnalyser("I am in sad mood");
-            Assert.AreEqual(_app.AnalyseMood(), this.sadResponse);
+            Assert.AreEqual(ResponseMessage.SadResponse, _app.AnalyseMood());
         }
         
         /// <summary>Testing for outcomes of AnalyseMood() with null input</summary>
@@ -26,7 +25,28 @@ namespace TestMoodAnalysis
         public void TestAnalyseMoodMethodWithNullInput()
         {
             _app = new MoodAnalyser();
-            Assert.AreEqual(_app.AnalyseMood(), this.happyResponse);
+            try
+            {
+                _app.AnalyseMood();
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual(ResponseMessage.NullErrorMessage, e.Message);
+            }
+        }
+        /// <summary>Testing for outcomes of AnalyseMood() with no input</summary>
+        [TestMethod, TestCategory(@"AnalyseMood() with empty string")]
+        public void TestAnalyseMoodMethodWithNoInput()
+        {
+            _app = new MoodAnalyser("");
+            try
+            {
+                _app.AnalyseMood();
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual(ResponseMessage.EmptyValueErrorMessage, e.Message);
+            }
         }
     }
 }
