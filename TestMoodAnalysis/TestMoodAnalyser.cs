@@ -74,5 +74,18 @@ namespace TestMoodAnalysis
                 Assert.AreEqual(ResponseMessage.MethodNotFoundResponse, e.Message);
             }
         }
+
+        /// <summary>Given MoodAnalyse classname should return MoodAnalyse obj using parameterized constructor</summary>
+        /// <returns>default constructor</returns>
+        [TestMethod, TestCategory(@"Use of Reflection")]
+        public void TestGivenMoodAnalyseClassName_ShouldReturnMoodAnalyseObj_UsingParameterizedConstructor()
+        {
+            object expected = new MoodAnalyser("HAPPY");
+            object obj = MoodAnalyserFactory.CreateMoodAnalyserParameterizedObj(
+                "MoodAnalyserAssignment.MoodAnalyser",
+                "MoodAnalyser",
+                "HAPPY");
+            expected.Equals(obj);
+        }
     }
 }
