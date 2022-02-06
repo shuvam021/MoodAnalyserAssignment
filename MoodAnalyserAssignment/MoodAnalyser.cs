@@ -18,7 +18,7 @@ namespace MoodAnalyserAssignment
         {
             this._message = msg;
         }
-        
+
         /// <summary>Detect Mood from given input</summary>
         /// <returns>HAPPY/SAD depends on input</returns>
         public string AnalyseMood()
@@ -28,7 +28,7 @@ namespace MoodAnalyserAssignment
                 if (_message.Equals(string.Empty))
                 {
                     throw new MoodAnalyserException(MoodExceptionType.EmptyValueException,
-                        ResponseMessage.EmptyValueErrorMessage);    
+                        ResponseMessage.EmptyValueErrorMessage);
                 }
                 else
                 {
@@ -37,9 +37,9 @@ namespace MoodAnalyserAssignment
                         : ResponseMessage.HappyResponse;
                 }
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException)
             {
-                throw new MoodAnalyserException(MoodExceptionType.NullException, 
+                throw new MoodAnalyserException(MoodExceptionType.NullException,
                     ResponseMessage.NullErrorMessage);
             }
         }

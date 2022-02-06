@@ -6,8 +6,7 @@ namespace MoodAnalyserAssignment
     {
         static void Main()
         {
-            // var app = new MoodAnalyser("I am in Happy mood");
-            var app = new MoodAnalyser();
+             var app = new MoodAnalyser("I am in Happy mood");
             Console.WriteLine(app.AnalyseMood());
         }
     }
