@@ -63,5 +63,25 @@ namespace MoodAnalyserAssignment
                 throw new Exception(e.Message);
             }
         }
+
+        public static string InvokeAnalyseMood(string message, string methodName)
+        {
+            try
+            {
+                Type type = Type.GetType("MoodAnalyserAssignment.MoodAnalyser");
+                object moodAnalyserObj = MoodAnalyserFactory.CreateMoodAnalyserParameterizedObj(
+                    "MoodAnalyserAssignment.MoodAnalyser",
+                    "MoodAnalyser",
+                    message);
+                MethodInfo analyseMoodInfo = type.GetMethod(methodName);
+                object mood = analyseMoodInfo.Invoke(moodAnalyserObj, null);
+                return mood.ToString();
+            }
+            catch (NullReferenceException)
+            {
+                throw new MoodAnalyserException(MoodExceptionType.No_SUCH_METHOD,
+                    ResponseMessage.MethodNotFoundResponse);
+            }
+        }
     }
 }

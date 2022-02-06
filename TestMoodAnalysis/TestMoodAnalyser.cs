@@ -87,5 +87,14 @@ namespace TestMoodAnalysis
                 "HAPPY");
             expected.Equals(obj);
         }
+
+        /// <summary>Given Happy should return Happy</summary>
+        [TestMethod, TestCategory(@"Use of Reflection")]
+        public void TestGivenHappyMoodShouldReturnHappy()
+        {
+            string expected = "HAPPY";
+            string mood = MoodAnalyserFactory.InvokeAnalyseMood(expected, "AnalyseMood");
+            Assert.AreEqual(expected, mood);
+        }
     }
 }
