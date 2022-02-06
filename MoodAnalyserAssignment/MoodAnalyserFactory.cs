@@ -83,5 +83,28 @@ namespace MoodAnalyserAssignment
                     ResponseMessage.MethodNotFoundResponse);
             }
         }
+
+        public static string SetField(string message, string fieldName)
+        {
+            try
+            {
+                MoodAnalyser moodAnalyser = new MoodAnalyser();
+                Type type = typeof(MoodAnalyser);
+                FieldInfo field = type.GetField(fieldName, BindingFlags.Public | BindingFlags.Instance);
+                if (message == null)
+                {
+                    throw new MoodAnalyserException(
+                        MoodExceptionType.NoSuchField, "Message should not be mull");
+                }
+
+                field.SetValue(moodAnalyser, message);
+                return moodAnalyser.message;
+            }
+            catch (NullReferenceException)
+            {
+                throw new MoodAnalyserException(
+                    MoodExceptionType.NoSuchField, ResponseMessage.NoSuchFieldResponse);
+            }
+        }
     }
 }

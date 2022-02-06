@@ -9,7 +9,7 @@
         public const string EmptyValueErrorMessage = "Value can not be empty";
         public const string ClassNotFoundResponse = "Class not found";
         public const string MethodNotFoundResponse = "Method not found";
-
+        public const string NoSuchFieldResponse = "Field is Not Found";
     }
 
     /// <summary>Collection of Custom Exception Types for Mood Analyser Project</summary>
@@ -19,5 +19,6 @@
         EmptyValueException,
         No_SUCH_CLASS,
         No_SUCH_METHOD,
+        NoSuchField,
     }
 }

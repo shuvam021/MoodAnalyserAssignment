@@ -5,18 +5,18 @@ namespace MoodAnalyserAssignment
     /// <summary>Project that detect Mood from user's posts</summary>
     public class MoodAnalyser
     {
-        private readonly string _message;
+         public string message;
 
-        /// <summary>Default Constructor where null is assigned as default input</summary>
+         /// <summary>Default Constructor where null is assigned as default input</summary>
         public MoodAnalyser()
         {
-            this._message = null;
+            this.message = null;
         }
 
         /// <summary>Constructor for collecting user's input</summary>
         public MoodAnalyser(string msg)
         {
-            this._message = msg;
+            this.message = msg;
         }
 
         /// <summary>Detect Mood from given input</summary>
@@ -25,14 +25,14 @@ namespace MoodAnalyserAssignment
         {
             try
             {
-                if (_message.Equals(string.Empty))
+                if (message.Equals(string.Empty))
                 {
                     throw new MoodAnalyserException(MoodExceptionType.EmptyValueException,
                         ResponseMessage.EmptyValueErrorMessage);
                 }
                 else
                 {
-                    return this._message.ToLower().Contains("sad")
+                    return this.message.ToLower().Contains("sad")
                         ? ResponseMessage.SadResponse
                         : ResponseMessage.HappyResponse;
                 }
